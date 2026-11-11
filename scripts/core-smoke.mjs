@@ -81,7 +81,7 @@ try {
     arguments: {}
   });
   assert.notEqual(doctor.isError, true, JSON.stringify(doctor));
-  assert.equal(doctor.structuredContent?.serverVersion, "0.29.0");
+  assert.equal(doctor.structuredContent?.serverVersion, "0.29.1");
   assert.equal(doctor.structuredContent?.guarantees?.tiaAttached, false);
   assert.equal(doctor.structuredContent?.guarantees?.residentWorkerStarted, false);
 

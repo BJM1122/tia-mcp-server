@@ -3,7 +3,7 @@ import { jsonResult } from "./results.js";
 
 // One operation behind a merged tool. Its own schema validates the request and fills the
 // defaults, so the tool's public schema only has to name the parameters.
-export function op<S extends z.ZodRawShape, R>(shape: S, run: (args: z.objectOutputType<S, z.ZodTypeAny>) => Promise<R>) {
+export function op<S extends z.ZodRawShape, R>(shape: S, run: (args: z.output<z.ZodObject<S>>) => Promise<R>) {
   const schema = z.object(shape);
   return async (raw: unknown) => {
     const parsed = schema.safeParse(raw);

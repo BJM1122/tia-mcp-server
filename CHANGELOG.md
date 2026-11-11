@@ -1,5 +1,17 @@
 # Changelog
 
+## 0.29.1 — 2026-11-10
+
+Dependency security update; tool behavior is unchanged.
+
+- Updates `@modelcontextprotocol/sdk` to 1.32.2, `zod` to 4.6.7 and
+  `fast-xml-parser` to 5.12.0, clearing the `npm audit` advisories reported
+  against 0.29.0 (SDK HTTP/OAuth transports and their transitive web-server
+  dependencies, zod collection validation, fast-xml-parser DOCTYPE entity
+  limits and unterminated stop-node scanning). The server only uses the stdio
+  transport, so the HTTP-side advisories were not reachable in normal use.
+- Adapts tool schemas to zod 4 (`z.record` takes an explicit key schema).
+
 ## 0.29.0 — 2026-11-10
 
 First standalone public distribution of the TIA Portal MCP server.

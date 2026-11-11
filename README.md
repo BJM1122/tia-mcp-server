@@ -5,7 +5,7 @@ for Windows that lets an AI coding assistant (Claude Code, Codex or any stdio MC
 client) analyze and carefully change Siemens TIA Portal projects through the
 official TIA Portal Openness API.
 
-Version **0.29.0** — first standalone public distribution. It contains only the
+Version **0.29.1** (0.29.0 was the first standalone public distribution). It contains only the
 tool itself: no TIA projects, exports, PLC programs, site data, Siemens binaries
 or private Git history.
 

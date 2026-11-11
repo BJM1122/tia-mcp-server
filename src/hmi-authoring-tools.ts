@@ -176,7 +176,7 @@ export function registerHmiAuthoringTools(server: McpServer, serverRoot: string,
   }, async input => reply(editNativeText(input.originalXml, input.baselineSha256, input.objectName, input.culture, input.text, input.composition)));
   server.registerTool("tia_update_hmi_object", {
     description: "Offline scoped edit of one uniquely named native screen object. Change existing geometry or RGB color properties while preserving all other native XML, bindings and extensions verbatim.",
-    inputSchema: { originalXml: z.string().max(25_000_000), baselineSha256: z.string().regex(/^[a-f0-9]{64}$/), objectName: z.string().min(1), properties: z.record(z.union([z.string(), z.number()])) },
+    inputSchema: { originalXml: z.string().max(25_000_000), baselineSha256: z.string().regex(/^[a-f0-9]{64}$/), objectName: z.string().min(1), properties: z.record(z.string(), z.union([z.string(), z.number()])) },
     annotations: { readOnlyHint: true }
   }, async input => reply(updateNativeObject(input.originalXml, input.baselineSha256, input.objectName, input.properties)));
   server.registerTool("tia_export_hmi_bundle", {

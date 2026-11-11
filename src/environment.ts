@@ -11,7 +11,7 @@ import { verifyImporterOffline } from "./plc-importer.js";
 
 // Environment and capability checks shared by the doctor, validate and import tools.
 
-export const SERVER_VERSION = "0.29.0";
+export const SERVER_VERSION = "0.29.1";
 
 // Versions served by the snapshot adapter family (no resident core): the snapshot
 // companion built for that exact version must be present, current and pass its self-test.
