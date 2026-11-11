@@ -1,0 +1,49 @@
+node_modules/
+dist/
+coverage/
+
+# Generated native companions and local build output
+tools/*.exe
+tools/*.dll
+tools/*.pdb
+tools/.tia-native-build-*/
+tools/stale-live-core-processes.json
+live-core/bin/
+live-core/obj/
+*.pdb
+
+# Local configuration, credentials and logs
+.env
+.env.*
+.secrets/
+*.key
+*.pem
+*.pfx
+*.p12
+*.cer
+*.crt
+*.log
+logs/
+.mcp.json
+.codex/
+.claude/
+
+# TIA Portal projects, archives, exports, snapshots and import evidence
+*.ap*
+*.zap*
+*.als*
+tia-out/
+tia-openness-export/
+tia-openness-import/
+tia-exports/
+_codex_index/
+*.zip
+*.7z
+*.bak
+
+# Editor and operating-system files
+.vs/
+.vscode/
+*.user
+.DS_Store
+Thumbs.db

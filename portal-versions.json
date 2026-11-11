@@ -1,0 +1,65 @@
+{
+  "$comment": "Single source of TIA Portal versions and native components for the TS server (src/tia-version.ts) and the native build (tools/Build-TiaNative.ps1). Adding a version: add or complete one row, then build its adapter. adapter null = recognized only. A row's capabilities are the allowed upper bound; a capability is verified when a companion built for that version passes its self-test and reports it (see docs/multi-version-architecture.md for which launches require that).",
+  "defaultVersion": "V20",
+  "$apiFeatureComment": "Public API features the native sources use only where the version has them. Build-TiaNative.ps1 defines TIA_API_<NAME> for each feature a row lists; without it the companion compiles its fallback and reports the feature as unavailable.",
+  "apiFeatureNames": ["cross_reference", "object_identifier", "block_interface", "software_namespaces", "safety_tags", "local_sessions"],
+  "components": [
+    {
+      "id": "live-core", "adapters": ["live-core", "v15-snapshot"], "buildCapability": "live_query", "baseName": "TiaLiveReadCore", "outputDir": "tools",
+      "sources": ["live-core/TiaLiveReadCore.cs", "live-core/LiveCoreApiCompat.cs"], "selfTestArgs": ["--api", "{api}", "--self-test"], "exeEnv": "TIA_MCP_LIVE_CORE_EXE"
+    },
+    {
+      "id": "importer", "adapters": ["live-core", "v15-snapshot"], "buildCapability": "block_import", "baseName": "TiaOpennessImportBlock", "outputDir": "tools",
+      "sources": ["live-core/TiaOpennessImportBlock.cs"], "selfTestArgs": ["--self-test", "--api", "{api}"]
+    },
+    {
+      "id": "hmi", "adapters": ["live-core"], "buildCapability": "hmi_authoring", "baseName": "TiaHmiNative", "outputDir": "tools",
+      "sources": ["live-core/TiaHmiNative.cs", "live-core/TiaHmiProject.cs", "live-core/TiaHmiUnified.cs"], "selfTestArgs": ["{api}", "--self-test"]
+    },
+    {
+      "id": "v15-snapshot", "adapters": ["v15-snapshot"], "buildCapability": "snapshot_export", "baseName": "TiaV15Snapshot", "outputDir": "tools",
+      "sources": ["live-core/TiaV15Snapshot.cs"], "selfTestArgs": ["--api", "{api}", "--self-test"], "exeEnv": "TIA_MCP_V15_1_SNAPSHOT_EXE"
+    }
+  ],
+  "versions": [
+    {
+      "id": "V20", "projectExtension": ".ap20", "registryKey": "TIAP20", "apiFolder": "V20",
+      "apiAssembly": { "major": 20, "minor": 0 },
+      "apiFeatures": ["cross_reference", "object_identifier", "block_interface", "software_namespaces", "safety_tags", "local_sessions"],
+      "apiDllEnv": "TIA_MCP_API_DLL_V20", "legacyApiDllEnv": "TIA_MCP_OPENNESS_API_DLL",
+      "installRoots": ["C:\\Program Files\\Siemens\\Automation\\Portal V20"],
+      "adapter": "live-core",
+      "capabilities": ["passive_ui_context", "snapshot_export", "live_query", "navigation", "engineering_inspect", "block_import", "hmi_export", "hmi_authoring"]
+    },
+    {
+      "id": "V15.1", "projectExtension": ".ap15_1", "registryKey": "TIAP15_1", "apiFolder": "V15.1",
+      "apiAssembly": { "major": 15, "minor": 1 }, "apiFeatures": [],
+      "apiDllEnv": "TIA_MCP_API_DLL_V15_1", "legacyApiDllEnv": "TIA_MCP_V15_1_API_DLL",
+      "installRoots": ["C:\\Program Files\\Siemens\\Automation\\Portal V15_1"],
+      "adapter": "v15-snapshot",
+      "capabilities": ["passive_ui_context", "snapshot_export", "block_import"]
+    },
+    {
+      "id": "V16", "projectExtension": ".ap16", "registryKey": "TIAP16", "apiFolder": "V16",
+      "apiAssembly": { "major": 16, "minor": 0 }, "apiFeatures": [], "apiDllEnv": "TIA_MCP_API_DLL_V16",
+      "installRoots": ["C:\\Program Files\\Siemens\\Automation\\Portal V16"], "adapter": null, "capabilities": []
+    },
+    {
+      "id": "V17", "projectExtension": ".ap17", "registryKey": "TIAP17", "apiFolder": "V17",
+      "apiAssembly": { "major": 17, "minor": 0 }, "apiFeatures": [], "apiDllEnv": "TIA_MCP_API_DLL_V17",
+      "installRoots": ["C:\\Program Files\\Siemens\\Automation\\Portal V17"],
+      "adapter": "v15-snapshot",
+      "capabilities": ["passive_ui_context", "snapshot_export", "block_import"]
+    },
+    {
+      "id": "V18", "projectExtension": ".ap18", "registryKey": "TIAP18", "apiFolder": "V18",
+      "apiAssembly": { "major": 18, "minor": 0 }, "apiFeatures": [], "apiDllEnv": "TIA_MCP_API_DLL_V18",
+      "installRoots": ["C:\\Program Files\\Siemens\\Automation\\Portal V18"], "adapter": null, "capabilities": []
+    },
+    {
+      "id": "V19", "projectExtension": ".ap19", "registryKey": "TIAP19", "apiFolder": "V19",
+      "apiAssembly": { "major": 19, "minor": 0 }, "apiFeatures": [], "apiDllEnv": "TIA_MCP_API_DLL_V19",
+      "installRoots": ["C:\\Program Files\\Siemens\\Automation\\Portal V19"], "adapter": null, "capabilities": []
+    }
+  ]
+}
