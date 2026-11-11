@@ -1,6 +1,7 @@
 {
   "name": "tia-portal-mcp-server",
   "version": "0.29.1",
+  "license": "MIT",
   "private": true,
   "type": "module",
   "bin": {

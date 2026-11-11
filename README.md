@@ -282,3 +282,7 @@ verification, never production projects.
   protected blocks, and native acceptance of HMI authoring.
 - Siemens, SIMATIC, TIA Portal and WinCC are trademarks of Siemens AG. This
   project is not affiliated with or endorsed by Siemens.
+
+## License
+
+[MIT](LICENSE)
